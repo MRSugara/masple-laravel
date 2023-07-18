@@ -28,17 +28,29 @@
                             Dashboard
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    {{-- <li class="nav-item ">
                         <a class="nav-link {{ $judul === 'Product' ? 'active' : '' }}" href="/product">
                             <span data-feather="shopping-cart" class="align-text-bottom"></span>
                             Products
                         </a>
+                    </li> --}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#dashboard-collapse" aria-expanded="false">
                             <span data-feather="users" class="align-text-bottom"></span>
                             Customers
                         </a>
+                        <div class="collapse " id="dashboard-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
+                                <li><a href="{{ route('category.index') }}"
+                                        class="link-dark d-inline-flex text-decoration-none rounded ">Kategori</a>
+                                </li>
+                                <li><a href="/product"
+                                        class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}">Products</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">

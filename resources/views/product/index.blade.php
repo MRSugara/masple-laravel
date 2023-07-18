@@ -6,7 +6,7 @@
             <h1 class="h2">Product</h1>
         </div>
 
-        <h5><a href="/product/create">Create new item</a></h5>
+        <h5><a href="{{ route('product.create') }}">Create new item</a></h5>
         <div class="table-responsive">
 
             <form action="/product" method="get">
