@@ -50,7 +50,7 @@
 
         <div class="table-responsive">
 
-            {{-- <form action="" method="get">
+            <form action="" method="get">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-sm-3">
@@ -77,7 +77,7 @@
                         <button type="submit" class="btn btn-primary mt-4">Search</button>
                     </div>
                 </div>
-            </form> --}}
+            </form>
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
@@ -97,22 +97,62 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->stok }}</td>
                             <td>{{ $data->category->name }}</td>
-                            {{-- <td>
-                                <button type="button" class="btn btn-primary badge " data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal-{{ $data->id }}"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .5rem;">
-                                    <span data-feather="eye"></span>
-                                </button>
+                            <td>
                                 <button type="button" class="btn btn-warning badge " data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal-{{ $data->id }}"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .5rem;">
+                                    data-bs-target="#exampleModal--{{ $data->id }}"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .5rem;">
                                     <span data-feather="edit"></span>
                                 </button>
-                                <a href="{{ route('category.destroy', ['id' => $category->id]) }}"
-                                    class="badge bg-danger"><span data-feather="trash-2"></span></a>
-                            </td> --}}
+                                <a href="{{ route('product.destroy', $data->id) }}" class="badge bg-danger"><span
+                                        data-feather="trash-2"></span></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            @foreach ($product as $edit)
+                <div class="modal fade" id="exampleModal--{{ $edit->id }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit product</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('product.update', ['id' => $data->id]) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <div class="mb-3">
+                                        <label for="name" class="col-form-label" id="name">Name:</label>
+                                        <input type="text" class="form-control name" id="name" name="name"
+                                            value="{{ $data->name }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="stok" class="col-form-label" id="stok">Stok:</label>
+                                        <input type="text" class="form-control stok" id="stok" name="stok"
+                                            type="number" value="{{ $data->stok }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="category" class="form-label">Category</label>
+                                        <select class="form-select" aria-label="category" id="category"
+                                            name="category">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">update</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </main>
 @endsection

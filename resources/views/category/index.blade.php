@@ -36,6 +36,7 @@
                                 </button>
                                 <a href="{{ route('category.destroy', ['id' => $category->id]) }}"
                                     class="badge bg-danger"><span data-feather="trash-2"></span></a>
+
                             </td>
                         </tr>
                     @endforeach

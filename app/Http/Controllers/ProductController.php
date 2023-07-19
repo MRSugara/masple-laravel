@@ -41,4 +41,20 @@ class ProductController extends Controller
         ]);
         return redirect('/product');
     }
+    public function update(Request $request, $id)
+    {
+        $categories = Category::all();
+        $product = Product::where('id',$id)->update([
+            'name' => $request->name,
+            'stok' => $request->stok,
+            'category_id' => $request->category
+        ]);
+        return redirect('/product');
+    }
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('/product');
+    }
 }
