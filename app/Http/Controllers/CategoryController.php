@@ -56,16 +56,22 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        // $categories = Category::find($id);
+        $categories = Category::where('id', $id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect('/kategori');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->delete();
+        return redirect('/kategori');
     }
 }

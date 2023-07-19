@@ -31,43 +31,44 @@
                             <td>{{ $category->name }}</td>
                             <td>
 
-                                {{-- <a href="/delete/{{ $category->id }}" class="badge bg-danger"><span
-                                        data-feather="trash-2"></span></a> --}}
-                                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    data-bs-whatever="@mdo"><a href="{{ route('category.index') }}"
-                                        class="badge bg-warning"><span data-feather="edit"></span></a></button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="recipient-name"
-                                                            class="col-form-label">Recipient:</label>
-                                                        <input type="text" class="form-control" id="recipient-name">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="message-text" class="col-form-label">Message:</label>
-                                                        <textarea class="form-control" id="message-text"></textarea>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Send message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-warning badge " data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal-{{ $category->id }}"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .5rem;">
+                                    <span data-feather="edit"></span>
+                                </button>
+                                <a href="{{ route('category.destroy', ['id' => $category->id]) }}"
+                                    class="badge bg-danger"><span data-feather="trash-2"></span></a>
                             </td>
                         </tr>
+                    @endforeach
+                    @foreach ($categories as $data)
+                        <div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit product</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('category.update', ['id' => $data->id]) }}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <div class="mb-3">
+                                                <label for="name" class="col-form-label" id="name">Name:</label>
+                                                <input type="text" class="form-control name" id="name"
+                                                    name="name" value="{{ $data->name }}">
+                                            </div>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">update</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
 
                 </tbody>
