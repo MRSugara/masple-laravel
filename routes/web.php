@@ -23,14 +23,13 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    //product
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     // Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-
-
-
+    //kategori
     Route::get('/kategori', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/', [CategoryController::class, 'store'])->name('category.store');
     Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
