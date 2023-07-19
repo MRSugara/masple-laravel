@@ -15,21 +15,25 @@ class ProductController extends Controller
         // // filter by name
 
         // $product ->when($request->name,function )
-
+        $product = Product::all();
+        $categories = Category::all();
         return view('product.index', [
             "judul" => "Product"
-        ]);
+        ], compact('product', 'categories'));
     }
     public function create()
     {
-        $categories = Category::all();
-
-        return view('product.create', [
-            "judul" => "Product"
-        ], compact('categories'));
+        // $product = Product::all();
+        // compact('product');
+        // // return view('product.create', [
+        // //     "judul" => "Product"
+        // // ], compact('categories'));
     }
     public function store(Request $request)
     {
+
+
+        $product = Product::all();
         $product = Product::create([
             'name' => $request->name,
             'stok' => $request->stok,

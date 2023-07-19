@@ -24,8 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    // Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+
 
     Route::get('/kategori', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/', [CategoryController::class, 'store'])->name('category.store');
