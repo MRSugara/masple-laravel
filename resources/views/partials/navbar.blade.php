@@ -36,37 +36,53 @@
                     </li> --}}
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ $judul === 'Product' ? 'active' : '' }}" href="/product">
+                            <span data-feather="package" class="align-text-bottom"></span>
+                            Product
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#dashboard-collapse" aria-expanded="false">
-                            <span data-feather="users" class="align-text-bottom"></span>
-                            Customers
+                            <span data-feather="dollar-sign" class="align-text-bottom"></span>
+                            Transaksi
                         </a>
                         <div class="collapse " id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
-                                <li><a href="{{ route('category.index') }}"
-                                        class="link-dark d-inline-flex text-decoration-none rounded ">Kategori</a>
+                                <li><a href=""
+                                        class="link-dark d-inline-flex text-decoration-none rounded "><span
+                                            data-feather="tag" class="mx-1 align-content-center"></span>Penjualan</a>
                                 </li>
-                                <li><a href="/product"
-                                        class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}">Products</a>
+                                <li><a href=""
+                                        class="link-dark d-inline-flex text-decoration-none rounded "><span
+                                            data-feather="layers"
+                                            class="mx-1 align-content-center"></span>Pengeluaran</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                            Reports
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#dashboard-collapse-" aria-expanded="false">
+                            <span data-feather="database" class="align-text-bottom"></span>
+                            Data
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers" class="align-text-bottom"></span>
-                            Integrations
-                        </a>
+                        <div class="collapse " id="dashboard-collapse-">
+                            <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
+                                <li><a href="{{ route('category.index') }}"
+                                        class="link-dark d-inline-flex text-decoration-none rounded "><i
+                                            class="bi bi-circle mx-1 "></i>Kategori</a>
+                                </li>
+                                <li><a href="/product"
+                                        class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}"><i
+                                            class="bi bi-circle mx-1"></i>Products</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
 
-                <h6
+                {{-- <h6
                     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                     <span>Saved reports</span>
                     <a class="link-secondary" href="#" aria-label="Add a new report">
@@ -98,7 +114,7 @@
                             Year-end sale
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </nav>
         <div class="container mt-3">

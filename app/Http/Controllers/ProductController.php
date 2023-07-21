@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // $product = product::query();
-        // // filter by name
+        $product = Product::query();
+        // filter by name
 
-        // $product ->when($request->name,function )
+        $product->when($request->name, function ($query) use ($request) {
+            return $query->where('name', 'like', '%' . $request->name . '%');
+        });
+
         $product = Product::all();
         $categories = Category::all();
         return view('product.index', [
@@ -31,20 +34,18 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-
-
         $product = Product::all();
         $product = Product::create([
             'name' => $request->name,
             'stok' => $request->stok,
             'category_id' => $request->category
         ]);
-        return redirect('/product');
+        return redirect()->route('product.index');
     }
     public function update(Request $request, $id)
     {
         $categories = Category::all();
-        $product = Product::where('id',$id)->update([
+        $product = Product::where('id', $id)->update([
             'name' => $request->name,
             'stok' => $request->stok,
             'category_id' => $request->category

@@ -6,10 +6,37 @@
             <h1 class="h2">Product</h1>
         </div>
 
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $product }}" type="button" class="mb-3 fs-4">Create new
+        <div class="col-lg-3 mb-3 p-3">
+            <form action="{{ route('product.store') }}" method="POST">
+                @csrf
+                <div class="mb-2">
+                    <label for="title" class="form-label">Name</label>
+                    <input type="input" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" autofocus value="{{ old('name') }}" autocomplete="off" required>
+                </div>
+                <div class="mb-2">
+                    <label for="stok" class="form-label">Stok</label>
+                    <input type="input" class="form-control @error('stok') is-invalid @enderror" id="stok"
+                        name="stok" value="{{ old('stok') }}" required autocomplete="off">
+                </div>
+                {{-- <div class="mb-2">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" aria-label="category" id="category" name="category">
+                        <option selected disabled>- Pilih Category -</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div> --}}
+                <button type="submit" class="btn-success btn dropdown ">Create</button>
+            </form>
+
+        </div>
+        {{-- <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $product }}" type="button"
+            class="mb-3 fs-4">Create new
             item</a>
-        <div class="modal fade" id="exampleModal-{{ $product }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModal-{{ $product }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -45,29 +72,25 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
-        <div class="table-responsive">
+        <div class="table-responsive m-3">
 
-            <form action="" method="get">
+            <form action="/" method="get">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-sm-3">
-                        <label for="" class="form-label">Name</label>
-                        <input name="name" type="text" class="form-control" placeholder="Name"
+                        <label for="name" class="form-label">Name</label>
+                        <input name="name" type="text" class="form-control" placeholder=""
                             value="{{ isset($_GET['name']) ? $_GET['name'] : '' }}">
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="" class="form-label">Age</label>
-                        <input name="number" type="number" class="form-control" placeholder="Age"
-                            value="{{ isset($_GET['age']) ? $_GET['age'] : '' }}">
                     </div>
                     <div class="col-sm-3">
                         <label for="" class="form-label">Gender</label>
                         <select name="gender" class="form-select">
                             <option value="">-</option>
-                            <option value="male" selected="{{ isset($_GET['gender']) && $_GET['gender'] == 'male' }}">Male
+                            <option value="male" selected="{{ isset($_GET['gender']) && $_GET['gender'] == 'male' }}">
+                                Male
                             </option>
                             <option value="female" selected="{{ isset($_GET['gender']) && $_GET['gender'] == 'male' }}">
                                 Female</option>
@@ -153,6 +176,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+
+
     </main>
 @endsection
