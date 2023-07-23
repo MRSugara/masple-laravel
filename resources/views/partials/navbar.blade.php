@@ -61,25 +61,28 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#dashboard-collapse-" aria-expanded="false">
-                            <span data-feather="database" class="align-text-bottom"></span>
-                            Data
-                        </a>
-                        <div class="collapse " id="dashboard-collapse-">
-                            <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
-                                <li><a href="{{ route('category.index') }}"
-                                        class="link-dark d-inline-flex text-decoration-none rounded "><i
-                                            class="bi bi-circle mx-1 "></i>Kategori</a>
-                                </li>
-                                <li><a href="/product"
-                                        class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}"><i
-                                            class="bi bi-circle mx-1"></i>Products</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    @if (Auth::user()->role->name == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#dashboard-collapse-" aria-expanded="false">
+                                <span data-feather="database" class="align-text-bottom"></span>
+                                Data
+                            </a>
+                            <div class="collapse " id="dashboard-collapse-">
+                                <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
+                                    <li><a href="{{ route('category.index') }}"
+                                            class="link-dark d-inline-flex text-decoration-none rounded "><i
+                                                class="bi bi-circle mx-1 "></i>Kategori</a>
+                                    </li>
+                                    <li><a href="/product"
+                                            class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}"><i
+                                                class="bi bi-circle mx-1"></i>Products</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+
                 </ul>
 
                 {{-- <h6

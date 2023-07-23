@@ -19,5 +19,10 @@ class UserSeeder extends Seeder
             'password' => 'password',
             'role_id' => 1
         ]);
+        User::create([
+            'name' => 'staff',
+            'password' => 'password',
+            'role_id' => 2
+        ]);
     }
 }

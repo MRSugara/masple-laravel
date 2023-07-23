@@ -30,8 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     //kategori
-    Route::get('/kategori', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('/', [CategoryController::class, 'store'])->name('category.store');
-    Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/kategori', [CategoryController::class, 'index'])->name('category.index');
+        Route::post('/', [CategoryController::class, 'store'])->name('category.store');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
 });
