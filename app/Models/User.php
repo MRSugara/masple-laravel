@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function gudang()
+    {
+        return $this->belongsTo(Gudang::class);
+    }
 }

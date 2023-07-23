@@ -5,15 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Gudang extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+    protected $table = 'gudangs';
     protected $fillable = [
-        'name'
+        'product_id',
+        'stok',
+        'user_id',
     ];
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

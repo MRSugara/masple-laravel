@@ -36,9 +36,9 @@
                     </li> --}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ $judul === 'Product' ? 'active' : '' }}" href="/product">
+                        <a class="nav-link {{ $judul === 'Gudang' ? 'active' : '' }}" href="/gudang">
                             <span data-feather="package" class="align-text-bottom"></span>
-                            Product
+                            Gudang
                         </a>
                     </li>
                     <li class="nav-item">
@@ -61,7 +61,7 @@
                             </ul>
                         </div>
                     </li>
-                    @if (Auth::user()->role->name == 'admin')
+                    @if (Auth::user()->role->name == 'admin' || Auth::user()->role->name == 'staff')
                         <li class="nav-item">
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#dashboard-collapse-" aria-expanded="false">

@@ -1,5 +1,5 @@
 body {
-    min-height: 100vh;
+    min-height: 200vh;
     min-height: -webkit-fill-available;
 }
 
@@ -8,9 +8,7 @@ html {
 }
 
 main {
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
+
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -60,7 +58,7 @@ main {
 }
 
 .scrollarea {
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .baru {

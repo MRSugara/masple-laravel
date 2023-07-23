@@ -5,24 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 
 use App\Models\Product;
+use App\Models\Satuan;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $product = Product::query();
-        // filter by name
 
-        $product->when($request->name, function ($query) use ($request) {
-            return $query->where('name', 'like', '%' . $request->name . '%');
-        });
-
+        $satuan = Satuan::all();
         $product = Product::all();
         $categories = Category::all();
         return view('product.index', [
             "judul" => "Product"
-        ], compact('product', 'categories'));
+        ], compact('product', 'categories', 'satuan'));
     }
     public function create()
     {
@@ -37,8 +33,12 @@ class ProductController extends Controller
         $product = Product::all();
         $product = Product::create([
             'name' => $request->name,
-            'stok' => $request->stok,
-            'category_id' => $request->category
+            'ukuran' => $request->ukuran,
+            'category_id' => $request->category,
+            'satuan_id' => $request->satuan,
+            'warna' => $request->warna,
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual
         ]);
         return redirect()->route('product.index');
     }
@@ -47,8 +47,12 @@ class ProductController extends Controller
         $categories = Category::all();
         $product = Product::where('id', $id)->update([
             'name' => $request->name,
-            'stok' => $request->stok,
-            'category_id' => $request->category
+
+            'category_id' => $request->category,
+            'satuan_id' => $request->satuan,
+            'warna' => $request->warna,
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual
         ]);
         return redirect('/product');
     }

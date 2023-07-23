@@ -3,7 +3,7 @@
 @section('container')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Create Category</h1>
+            <h1 class="h2">Category</h1>
         </div>
         <div class="col-lg-8 mb-5">
             <form action="{{ route('category.store') }}" method="POST">
@@ -16,7 +16,7 @@
 
                 <button class="btn-success btn dropdown" type="submit">Create</button>
             </form>
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm" id="dataTable">
                 <thead>
                     <tr>
                         <th scope="col">No.</th>

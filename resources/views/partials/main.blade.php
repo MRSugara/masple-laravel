@@ -11,6 +11,13 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/sidebars.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -64,12 +71,7 @@
             -webkit-overflow-scrolling: touch;
         }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/sidebars.css') }}">
 
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-    <link rel="stylesheet"
-        href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css') }}">
 </head>
 
 <body>
@@ -82,9 +84,19 @@
     <script src={{ asset('https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js') }}
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+
+
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/sidebars.js') }}"></script>
     <script src="{{ asset('js/snippets.js') }}"></script>
+    <script src="{{ asset('js/datatables-demo.js') }}"></script>
+
 </body>
 
 </html>
