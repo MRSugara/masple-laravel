@@ -17,8 +17,8 @@
                         </div>
                         <div class="mb-2">
                             <label for="password" class="form-label">Password</label>
-                            <input type="input" class="form-control @error('password') is-invalid @enderror" id="password"
-                                name="password" value="{{ old('password') }}" required autocomplete="off">
+                            <input type="input" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name="password" value="{{ old('password') }}" required autocomplete="off">
                         </div>
                         <button type="submit" class="btn-success btn dropdown mt-2">Create</button>
                     </form>
@@ -68,7 +68,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('kasir.update', ['id' => $edit->id ]) }}" method="POST">
+                                        <form action="{{ route('kasir.update', ['id' => $edit->id]) }}" method="POST">
                                             @csrf
                                             @method('put')
                                             <div class="mb-3">
