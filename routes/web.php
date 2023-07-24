@@ -8,6 +8,7 @@ use App\Http\Controllers\GudangController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KasirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [CategoryController::class, 'store'])->name('category.store');
         Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+        Route::get('/kasir', [KasirController::class, 'index'])->name('kasir.index');
+        Route::post('/kasir', [KasirController::class, 'store'])->name('kasir.store');
+        Route::put('/kasir/{id}', [KasirController::class, 'update'])->name('kasir.update');
+        Route::put('/kasir/{id}', [KasirController::class, 'update'])->name('kasir.update');
+        Route::get('/kasir/{id}', [KasirController::class, 'destroy'])->name('kasir.destroy');
     });
 });

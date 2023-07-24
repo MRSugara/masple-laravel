@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'role_id' => 1
         ]);
         User::create([
-            'name' => 'staff',
+            'name' => 'kasir',
             'password' => 'password',
             'role_id' => 2
         ]);

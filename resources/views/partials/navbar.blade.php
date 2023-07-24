@@ -61,15 +61,19 @@
                             </ul>
                         </div>
                     </li>
-                    @if (Auth::user()->role->name == 'admin' || Auth::user()->role->name == 'staff')
+                    @if (Auth::user()->role->name == 'admin')
                         <li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            <a class="nav-link collapsed {{ $judul === 'Kasir'||$judul === 'Product' ? 'active' : '' }}" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#dashboard-collapse-" aria-expanded="false">
                                 <span data-feather="database" class="align-text-bottom"></span>
                                 Data
                             </a>
                             <div class="collapse " id="dashboard-collapse-">
                                 <ul class="btn-toggle-nav list-unstyled fw-medium small baru">
+                                    <li><a href="/kasir"
+                                            class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Kasir' ? 'active' : '' }}"><i
+                                                class="bi bi-circle mx-1"></i>Kasir</a>
+                                    </li>
                                     <li><a href="{{ route('category.index') }}"
                                             class="link-dark d-inline-flex text-decoration-none rounded "><i
                                                 class="bi bi-circle mx-1 "></i>Kategori</a>
@@ -78,7 +82,9 @@
                                             class="link-dark d-inline-flex text-decoration-none rounded {{ $judul === 'Product' ? 'active' : '' }}"><i
                                                 class="bi bi-circle mx-1"></i>Products</a>
                                     </li>
+
                                 </ul>
+
                             </div>
                         </li>
                     @endif
